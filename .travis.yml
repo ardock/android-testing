@@ -2,6 +2,8 @@ language: android
 
 sudo: false
 
+before_cache:
+  - rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/modules-2/modules-2.lock
 cache:
   directories:
     - ${TRAVIS_BUILD_DIR}/gradle/caches/
