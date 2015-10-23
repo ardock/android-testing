@@ -48,7 +48,7 @@ before_script:
   - ./execute wait-for-device-ready
 
 script:
-  - ./gradlew espressoBasicSample:cC espressoCustomMatcherSample:cC espressoMultiWindowSample:cC
+  - ./gradlew espressoBasicSample:cC
 
 after_script:
   - cat ${TRAVIS_BUILD_DIR}/ui/espresso/*/app/build/outputs/androidTest-results/connected/* # logs
