@@ -27,7 +27,7 @@ matrix:
     - env: AVD_TARGET=android-15
     - env: AVD_TARGET=android-17
     - env: AVD_TARGET=android-19
-    - env: AVD_TARGET=android-21
+    - env: AVD_TARGET=android-23
     - env: AVD_TARGET='Google Inc.:Google APIs:21' AVD_TAG=google_apis
            TARGET_PKGS=addon-google_apis-google-21,sys-img-armeabi-v7a-addon-google_apis-google-21
   allow_failures:
@@ -36,19 +36,19 @@ matrix:
   fast_finish: true
 
 before_install:
-  - ./execute inexistent install-and-update-sdk
+  - ./execute install-and-update-sdk
   - ./execute create-and-start-device wait-for-device-online
 
 install:
   - ./gradlew --version # show version and download Gradle Wrapper when is not present in cache
   - ./gradlew clean # clean project and download Android dependencies when are not present in cache
-  - ./gradlew assemble
+  - ./gradlew espressoBasicSample:assemble
 
 before_script:
-  - ./execute wait-for-device-ready inexistent
+  - ./execute wait-for-device-ready
 
 script:
-  - ./gradlew connectedCheck
+  - ./gradlew espressoBasicSample:connectedCheck
 
 after_script:
-  - cat ${TRAVIS_BUILD_DIR}/espresso/*/app/build/outputs/androidTest-results/connected/* # show logs
+  - cat ${TRAVIS_BUILD_DIR}/ui/espresso/*/app/build/outputs/androidTest-results/connected/* # logs
