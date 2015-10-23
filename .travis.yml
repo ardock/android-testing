@@ -22,22 +22,22 @@ env:
     - ANDROID_LOG_TAGS='NetworkStats:S dalvikvm:S Zygote:S Resources:S *:D'
     - ANDROID_SERIAL='emulator-5554'
     - ANDROID_HOME='/usr/local/android-sdk'
+    - ANDROID_SDK_HOME='/usr/local/android-sdk'
     - PATH="${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${PATH}"
 
 matrix:
   include:
-    - env: AVD_TARGET=android-15
+#    - env: AVD_TARGET=android-15
     - env: AVD_TARGET=android-17
-    - env: AVD_TARGET=android-19
+#    - env: AVD_TARGET=android-19
     - env: AVD_TARGET=android-21
     - env: AVD_TARGET=android-23
-#    - env: AVD_TARGET='Google Inc.:Google APIs:21' AVD_TAG=google_apis
-#           TARGET_PKGS=addon-google_apis-google-21,sys-img-armeabi-v7a-addon-google_apis-google-21
+    - env: AVD_TARGET='Google Inc.:Google APIs:21' AVD_TAG=google_apis
+           TARGET_PKGS=addon-google_apis-google-21,sys-img-armeabi-v7a-addon-google_apis-google-21
   allow_failures:
-    - env: AVD_TARGET=android-21
     - env: AVD_TARGET=android-23
-#    - env: AVD_TARGET='Google Inc.:Google APIs:21' AVD_TAG=google_apis
-#           TARGET_PKGS=addon-google_apis-google-21,sys-img-armeabi-v7a-addon-google_apis-google-21
+    - env: AVD_TARGET='Google Inc.:Google APIs:21' AVD_TAG=google_apis
+           TARGET_PKGS=addon-google_apis-google-21,sys-img-armeabi-v7a-addon-google_apis-google-21
   fast_finish: true
 
 before_install:
