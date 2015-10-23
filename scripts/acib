@@ -19,7 +19,6 @@ function create-and-start-device {
         -no-skin \
         -no-audio \
         -no-window \
-        -no-boot-anim \
         -debug "${AVD_DEBUG:-avd_config}" &
 }
 
