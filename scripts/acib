@@ -55,7 +55,7 @@ function wait-for-device-ready {
     done
     sleep 30
     adb shell input keyevent 82 &
-    sleep 120
+    sleep 300
     echo "Done"
 }
 
